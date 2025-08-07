@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>J Kuber Singh | Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Professional fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;500;400&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --accent: #2563eb;
+      --highlight: #f59e42;
+      --bg: #f6f8fa;
+      --card: #ffffff;
+      --timeline: #e9ecef;
+      --btn: #1d293f;
+      --btn-hover: #2563eb;
+      --success: #21bf73;
+      --white: #fff;
+      --shadow: 0 2px 14px rgba(40,60,90,.09);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      font-family: 'Montserrat', Arial, sans-serif;
+      color: #222;
+    }
+    header {
+      text-align:center;
+      background: linear-gradient(110deg, #182848, #2563eb 70%);
+      color: var(--white);
+      padding: 2.6em 1.6em 2em 1.6em;
+    }
+    .profile-img {
+      width: 120px; height: 120px; object-fit: cover; border-radius: 50%;
+      border: 4px solid var(--highlight); margin-bottom: 1em;
+      background: #fff;
+      box-shadow: 0 6px 22px rgba(37,99,235,0.10);
+    }
+    .head-title {
+      font-family: 'Merriweather', serif;
+      font-weight: 700;
+      font-size: 2.2em;
+      color: var(--white);
+      margin-bottom: 0.2em;
+    }
+    .subtitle {
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 1.12em;
+      color: #e3e8f2;
+      margin-bottom: .7em;
+    }
+    .actions {
+      margin: 2em auto 0 auto;
+      display: flex; gap: 1em;
+      justify-content: center; flex-wrap: wrap;
+    }
+    .action-btn {
+      display: flex; align-items: center; gap: .45em;
+      background: var(--btn);
+      color: var(--white);
+      padding: .7em 1.25em;
+      border-radius: 28px;
+      font-size: 1.08em;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background .19s;
+      box-shadow: 0 2px 12px rgba(19,30,44,0.04);
+    }
+    .action-btn:hover { background: var(--btn-hover);}
+    nav {
+      background: var(--white);
+      padding: 0.7em 0 0.6em 0;
+      text-align: center;
+      position: sticky; top: 0; z-index:100;
+      box-shadow: 0 2px 10px rgba(37,99,235,.07);
+    }
+    nav a {
+      color: var(--accent);
+      font-weight: 600;
+      text-decoration: none;
+      margin: 0 1.2em;
+      font-size: 1.10em;
+      border-bottom: 2px solid transparent;
+      transition: color .19s, border .19s;
+      padding-bottom: 2px;
+    }
+    nav a:hover { color: var(--highlight); border-bottom-color: var(--highlight);}
+    section {
+      max-width: 940px;
+      margin: 3em auto 2.2em auto;
+      background: var(--card);
+      border-radius: 15px;
+      box-shadow: var(--shadow);
+      padding: 2em 1.1em 2em 1.1em;
+      position: relative;
+    }
+    h2 {
+      font-family: 'Merriweather', serif;
+      color: var(--accent);
+      margin-top: 0; margin-bottom: 1.1em;
+      font-size: 2em;
+      font-weight: 700;
+    }
+    /* Card layouts */
+    .card-list { display: flex; flex-wrap: wrap; gap: 1em; }
+    .card {
+      background: linear-gradient(130deg, #f6f8fa, #ffffff 80%);
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      margin: 0 0 1em 0;
+      padding: 1.25em 1em 1.1em 1em;
+      min-width: 210px; max-width: 332px; flex: 1 1 240px;
+      display: flex; flex-direction: column; align-items: flex-start;
+      transition: background 0.19s, box-shadow 0.19s, transform 0.11s;
+    }
+    .card:hover, .card:focus-within { background: #e7f3ff; box-shadow: 0 3px 24px #accffe33; transform: translateY(-3px) scale(1.01);}
+    .card-icon {font-size: 2.1em; margin-bottom: 0.4em; color: var(--highlight);}
+    .card-title {font-size: 1.14em; font-weight: 700; color: var(--accent);}
+    .card-desc {font-size: 1.04em; margin-top: 0.2em;}
+    /* Timeline/leadership section */
+    .timeline { border-left: 4px solid var(--accent); padding-left: 1.4em;}
+    .timeline-step { margin-bottom: 1.9em; position: relative; }
+    .timeline-step:before {
+      content: ""; position: absolute; left: -1.74em; top: 9px;
+      width: 18px; height: 18px; border-radius: 50%;
+      border: 3px solid var(--highlight); background: #fff;
+    }
+    .timeline-label { font-weight: 700; color: var(--accent);}
+    .timeline-date { color: var(--success); font-size: .98em; }
+    /* Gallery */
+    .gallery { display: flex; gap: 1em; flex-wrap: wrap; justify-content: center; margin-top:0.9em;}
+    .gallery-img { border:3px solid var(--accent); border-radius: 11px; width: 220px; height: 150px; object-fit: cover; box-shadow: var(--shadow);}
+    /* Achievement Button */
+    .cert-btn {
+      display: inline-block;
+      margin-top: .8em;
+      background: var(--success);
+      color: #fff !important;
+      padding: .46em 1em;
+      border-radius: 20px;
+      font-size: 0.99em;
+      font-weight: 600;
+      letter-spacing: .01em;
+      box-shadow: 0 2px 9px #82daa621;
+      text-decoration: none;
+      transition: background .17s;
+    }
+    .cert-btn:hover { background: var(--highlight);}
+    .langs-badge {
+      background: var(--success); color: var(--white);
+      font-weight: 600; font-size:.97em; border-radius: 18px;
+      padding:.2em 1.05em; display: inline-block; margin-right:.7em;
+      margin-bottom:.48em;}
+    /* Responsive */
+    @media (max-width: 820px) {
+      .card-list, .gallery { flex-direction: column; align-items: center;}
+      .timeline { padding-left: .8em;}
+      section { padding: 1.2em 0.2em; }
+      .gallery-img { width: 150px; height: 90px; }
+      .card { min-width: 180px; }
+      nav a { margin: 0 .6em;}
+    }
+    /* Animations */
+    [data-animate] { opacity: 0; transform: translateY(38px); transition: opacity .55s, transform .55s;}
+    [data-animate].active { opacity: 1; transform: none;}
+    footer {background: #19204d; color: #fff; text-align:center; padding: 1.1em 0; font-size:1.08em;}
+  </style>
+</head>
+<body>
+  <header>
+    <img src="profile-formal.jpg" class="profile-img" alt="Profile Photo">
+    <div class="head-title">J Kuber Singh</div>
+    <div class="subtitle">M.Pharm (Quality Assurance) | Clinical Research | Data Analysis | Leadership</div>
+    <div style="margin-top:.5em;margin-bottom:.9em;font-weight:500;">Bengaluru, Karnataka, India</div>
+    <div class="actions">
+      <a class="action-btn" href="mailto:jkubersingh2804@outlook.com">📧 Mail</a>
+      <a class="action-btn" href="https://www.linkedin.com/in/j-kuber-singh-a3a400217" target="_blank">🔗 LinkedIn</a>
+      <a class="action-btn" href="https://wa.me/917204628879" target="_blank">💬 WhatsApp</a>
+    </div>
+  </header>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#leadership">Leadership</a>
+    <a href="#achievements">Achievements</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section id="about" data-animate>
+    <h2>About Me</h2>
+    <div class="card-list">
+      <div class="card">
+        <div class="card-icon">👨‍⚕️</div>
+        <div class="card-title">Who am I?</div>
+        <div class="card-desc">
+          Motivated M.Pharm grad in Quality Assurance, with advanced certifications in Clinical Research, Data Management, Pharmacovigilance, Medical Writing & Regulatory Affairs. Eager to apply my knowledge and hands-on QA/validation experience to solve real-world challenges in pharmaceutical and healthcare domains.
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🎯</div>
+        <div class="card-title">Mission / Values</div>
+        <div class="card-desc">
+          My drive: <b>Integrity • Service • Excellence • Innovation</b>.  
+          Deeply passionate about blending science and service, I lead by example—in labs and in the community.
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🌐</div>
+        <div class="card-title">Languages</div>
+        <div>
+          <span class="langs-badge">English</span>
+          <span class="langs-badge">Hindi</span>
+          <span class="langs-badge">Kannada</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" data-animate>
+    <h2>Major Projects & Publications</h2>
+    <div class="card-list">
+      <div class="card">
+        <div class="card-icon">📝</div>
+        <div class="card-title">Cleaning Method Validation (M.Pharm Thesis)</div>
+        <div class="card-desc">
+          Validated herbal tablet residue cleaning using HPLC (Boswellic Acid); enhanced QA/QMS and audit readiness. Swab and rinse methodology, UV and HPLC, with solid regulatory outcomes.
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔬</div>
+        <div class="card-title">Clinical/Community Survey</div>
+        <div class="card-desc">
+          <b>Community Based Survey on Prevalence of Drug Resistance to Misuse or Abuse of Self Medication</b>  
+          <span style="display:block; margin:.5em 0 0 0;">
+            <a class="cert-btn" target="_blank" href="https://www.echemcom.com/index.php/ECB/article/view/1755">Read Publication</a>
+          </span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🦠</div>
+        <div class="card-title">Sanitizer Gel R&D</div>
+        <div class="card-desc">
+          <b>Formulation and Evaluation of Essential Oils Based Antimicrobial Hand Sanitizer Gel</b>  
+          <span style="display:block; margin:.5em 0 0 0;">
+            <a class="cert-btn" target="_blank" href="https://pnrjournal.com/index.php/home/article/view/12669">Read Publication</a>
+          </span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📚</div>
+        <div class="card-title">Book Authored</div>
+        <div class="card-desc">
+          <i>"The Quantum Path: A Journey Beyond The Stars"</i>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" data-animate>
+    <h2>Skills & Certifications</h2>
+    <div class="card-list">
+      <div class="card">
+        <div class="card-icon">🧑‍💻</div>
+        <div class="card-title">Pharma/QC/QA</div>
+        <div class="card-desc">
+          Validation, eCTD, Regulatory Docs, Clinical Data Mgmt, Pharmacovigilance
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-icon">💻</div>
+        <div class="card-title">Tech/Analysis</div>
+        <div class="card-desc">
+          SAS, SQL, MS Power BI, Data Analysis, MS Office Suite
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🎓</div>
+        <div class="card-title">Certifications</div>
+        <div class="card-desc" style="margin-bottom:.7em;">
+          <b>Clinical Trial Analysis & Reporting (Internshala)</b><br>
+          <a class="cert-btn" href="https://drive.google.com/file/d/1TihRs4wR9KVvDXfXE4_48mBcoXLz3qXA/view?usp=sharing" target="_blank">View Certificate</a>
+          <br>
+          <b>SAS Programming 1: Essentials (SAS)</b><br>
+          <a class="cert-btn" href="https://www.credly.com/badges/9e45e6a7-a4ba-478c-8750-69f3aaa06e94/public_url" target="_blank">View Certificate</a>
+          <br>
+          <b>Introduction to SQL (SimpliLearn)</b><br>
+          <a class="cert-btn" href="https://drive.google.com/file/d/1WJ37NnYKk6F0ZPdpPHokOislFjI-PlJg/view" target="_blank">View Certificate</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-icon">⚡</div>
+        <div class="card-title">Soft/Professional</div>
+        <div class="card-desc">
+          Communication, Teamwork, Leadership, Problem Solving, Project Mgmt, Time Mgmt
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="leadership" data-animate>
+    <h2>Leadership & Volunteering</h2>
+    <div class="timeline">
+      <div class="timeline-step">
+        <span class="timeline-label">Post Warden – Karnataka Civil Defence, Div. 13</span> &nbsp;<span class="timeline-date">2020–Present</span>
+        <div>Emergency preparedness, public safety, disaster response, training, and leading volunteer teams for resilience in Bangalore.</div>
+        <a class="cert-btn" href="https://drive.google.com/file/d/1RHGUm5iVK1bVIAEmrtGxym5FrtAZt0KG/view?usp=sharing" target="_blank">View Certificate</a>
+      </div>
+
+      <div class="timeline-step">
+        <span class="timeline-label">President – Rotaract Club of KLE Pharma-BLR</span> &nbsp;<span class="timeline-date">2021–2023</span>
+        <div>Leadership in community/health drives, volunteering, social impact, and outreach initiatives. 2-year president.</div>
+        <a class="cert-btn" href="https://drive.google.com/file/d/1QlnRs7BuvEJ1AC2g5VKyDr16PgXL2EF5/view?usp=sharing" target="_blank">View Certificate</a>
+      </div>
+      <div class="timeline-step">
+        <span class="timeline-label">Best NSS Volunteer – KLE University</span> &nbsp;<span class="timeline-date">2022</span>
+        <div>Recognized for dedication/social engagement and exemplary NSS contributions</div>
+        <a class="cert-btn" href="https://drive.google.com/file/d/1QUlnI0NvoE6eVd7uEeT24NguKps3Muzv/view?usp=sharing" target="_blank">View Certificate</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="achievements" data-animate>
+    <h2>Achievements & Awards</h2>
+    <div class="card-list">
+      <div class="card">
+        <div class="card-icon">🏅</div>
+        <div class="card-title">Letter of Appreciation - Fauji ke Alfaaz (Jan 2021)</div>
+        <div class="card-desc">
+          For COVID-19 relief, education & awareness outreach.<br>
+          <a class="cert-btn" href="https://drive.google.com/file/d/1QW82nrE8SanjQZhkskfWMrq73Ju3ugLM/view" target="_blank">View Certificate</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏅</div>
+        <div class="card-title">Letter of Appreciation - Bharat Electronics Limited (Feb 2023)</div>
+        <div class="card-desc">
+          Aero India volunteer management & essential services coordination.<br>
+          <a class="cert-btn" href="https://drive.google.com/file/d/1QjXbR11zel0w9Nf5Ch36DEYlikk3Hqd2/view?usp=sharing" target="_blank">View Certificate</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏅</div>
+        <div class="card-title">Letter of Appreciation - Govt. of Karnataka Social Welfare Dept. (May 2020)</div>
+        <div class="card-desc">
+          Recognized by state officials for COVID-19 relief and welfare.<br>
+          <a class="cert-btn" href="https://drive.google.com/file/d/1Qqtwb8hhNoJfPU8oAIqm7Obb2W9I_U9X/view?usp=sharing" target="_blank">View Certificate</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🎖️</div>
+        <div class="card-title">Citizen Coordinator – BBMP Yelahanka Zone (Jul 2021)</div>
+        <div class="card-desc">
+          Recognized for key pandemic efforts in Bangalore municipal zone.<br>
+          <a class="cert-btn" href="https://drive.google.com/file/d/1Qr6N9WX43ohlYAIm8iJpbXEhh6KB0m4h/view?usp=sharing" target="_blank">View Certificate</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🎖️</div>
+        <div class="card-title">Certificate of Appreciation – BBMP, NHCW (Jun 2020)</div>
+        <div class="card-desc">
+          Volunteered for Home Quarantine Watch and Care, curbing COVID spread.<br>
+          <a class="cert-btn" href="https://drive.google.com/file/d/1QrW5CMw9Mv3mnoJvn10FsqInofDNMPgD/view?usp=sharing" target="_blank">View Certificate</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🎖️</div>
+        <div class="card-title">Neighborhood Quarantine Watch & Care Volunteer</div>
+        <div class="card-desc">
+          Served the community via Government of Karnataka pandemic programs.<br>
+          <a class="cert-btn" href="https://drive.google.com/file/d/1QsRBkZfDeDEQd9zAkFrmz-sE5X19tztV/view?usp=sharing" target="_blank">View Certificate</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-icon">✈️</div>
+        <div class="card-title">Aero India, Rapid Action Medical Team (Feb 2023)</div>
+        <div class="card-desc">
+          Volunteered for Indian Air Force medical team at Aero India.<br>
+          <a class="cert-btn" href="https://drive.google.com/file/d/1QUlnI0NvoE6eVd7uEeT24NguKps3Muzv/view?usp=sharing" target="_blank">View Certificate</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏆</div>
+        <div class="card-title">State R D Participation – Dept. of Youth Empowerment and Sports (Jan 2021)</div>
+        <div class="card-desc">
+          Republic Day parade camp participant, recognized for leadership.<br>
+          <a class="cert-btn" href="https://drive.google.com/file/d/1R-tZB2FlcsKEpDKTPRDDSQdbT5PNmwqt/view?usp=sharing" target="_blank">View Certificate</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏆</div>
+        <div class="card-title">Pre-RD Selection Camp – Ministry of Youth Affairs (Dec 2020)</div>
+        <div class="card-desc">
+          Selected for, and participated in, Pre-Republic Day Camp representing Karnataka.<br>
+          <a class="cert-btn" href="https://drive.google.com/file/d/1R-tZB2FlcsKEpDKTPRDDSQdbT5PNmwqt/view?usp=sharing" target="_blank">View Certificate</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery" data-animate>
+    <h2>Photo Gallery</h2>
+    <div class="gallery">
+      <img src="profile-formal.jpg" alt="Formal" class="gallery-img">
+      <img src="gallery-outdoor-buddha.jpg" alt="Outdoor Landmark" class="gallery-img">
+      <img src="gallery-casual-door.jpg" alt="At home" class="gallery-img">
+    </div>
+  </section>
+
+  <section id="contact" data-animate>
+    <h2>Contact Me</h2>
+    <div class="card-list">
+      <div class="card">
+        <div class="card-icon">📧</div>
+        <div class="card-title">Mail Me</div>
+        <div class="card-desc"><a class="action-btn" href="mailto:jkubersingh2804@outlook.com">Send Email</a></div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔗</div>
+        <div class="card-title">LinkedIn</div>
+        <div class="card-desc"><a class="action-btn" href="https://www.linkedin.com/in/j-kuber-singh-a3a400217" target="_blank">Connect</a></div>
+      </div>
+      <div class="card">
+        <div class="card-icon">💬</div>
+        <div class="card-title">WhatsApp</div>
+        <div class="card-desc"><a class="action-btn" href="https://wa.me/917204628879" target="_blank">Direct Message</a></div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📍</div>
+        <div class="card-title">Location</div>
+        <div class="card-desc">Bengaluru, Karnataka, India<br>+91 7204628879</div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 J Kuber Singh | Professional Portfolio
+  </footer>
+
+  <!-- Animation script -->
+  <script>
+    function animateOnScroll(){
+      document.querySelectorAll('[data-animate]').forEach(section=>{
+        const rect=section.getBoundingClientRect();
+        if(rect.top<window.innerHeight-80){
+          section.classList.add('active');
+        }
+      });
+    }
+    window.addEventListener('scroll',animateOnScroll);
+    window.addEventListener('DOMContentLoaded',animateOnScroll);
+  </script>
+</body>
+</html>
